@@ -726,6 +726,46 @@
                    </property>
                   </widget>
                  </item>
+                 <item row="2" column="0">
+                  <widget class="QLabel" name="label_Distance">
+                    <property name="text">
+                    <string>Distance</string>
+                    </property>
+                  </widget>
+                 </item>
+                 <item row="3" column="0">
+                  <widget class="QDoubleSpinBox" name="StepDistance">
+                    <property name="minimum">
+                    <double>0.000000000000000</double>
+                    </property>
+                    <property name="maximum">
+                    <double>20.000000000000000</double>
+                    </property>
+                    <property name="singleStep">
+                    <double>0.100000000000000</double>
+                    </property>
+                  </widget>
+                 </item>
+                 <item row="4" column="0">
+                  <widget class="QLabel" name="label_YawAngle">
+                    <property name="text">
+                    <string>Yaw Angle</string>
+                    </property>
+                  </widget>
+                 </item>
+                 <item row="5" column="0">
+                  <widget class="QDoubleSpinBox" name="StepYawAngle">
+                    <property name="minimum">
+                    <double>0.000000000000000</double>
+                    </property>
+                    <property name="maximum">
+                    <double>360.000000000000000</double>
+                    </property>
+                    <property name="singleStep">
+                    <double>1.000000000000000</double>
+                    </property>
+                  </widget>
+                 </item>
                  <item row="0" column="1" rowspan="2" colspan="2">
                   <layout class="QGridLayout" name="horizontalLayout">
                    <property name="sizeConstraint">
