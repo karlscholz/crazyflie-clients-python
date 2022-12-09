@@ -274,9 +274,9 @@ class FlightTab(TabToolbox, flight_tab_class):
         elif action == CommanderAction.DOWN:
             self._hlCommander.down(0.5)
         elif action == CommanderAction.YAW_LEFT:
-            self._hlCommander.up(0.5)
+            self._hlCommander.yaw(yaw=0.39, duration_s=0.1)
         elif action == CommanderAction.YAW_RIGHT:
-            self._hlCommander.down(0.5)
+            self._hlCommander.yaw(yaw=-0.39, duration_s=0.1)
 
     def _logging_error(self, log_conf, msg):
         QMessageBox.about(self, "Log error",
