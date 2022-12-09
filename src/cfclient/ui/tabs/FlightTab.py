@@ -117,6 +117,9 @@ class FlightTab(TabToolbox, flight_tab_class):
 
     _limiting_updated = pyqtSignal(bool, bool, bool)
 
+    _stepDistance = 0.5
+    _stepYawAngle = 22.5
+
     def __init__(self, helper):
         super(FlightTab, self).__init__(helper, 'Flight Control')
         self.setupUi(self)
@@ -166,6 +169,8 @@ class FlightTab(TabToolbox, flight_tab_class):
         self.slewEnableLimit.valueChanged.connect(self.thrustLoweringSlewRateLimitChanged)
         self.targetCalRoll.valueChanged.connect(self._trim_roll_changed)
         self.targetCalPitch.valueChanged.connect(self._trim_pitch_changed)
+        self.stepDistance.valueChanged.connect(self._stepDistance_changed)
+        self.stepYawAngle.valueChanged.connect(self._stepYawAngle_changed)
         self.maxAngle.valueChanged.connect(self.maxAngleChanged)
         self.maxYawRate.valueChanged.connect(self.maxYawRateChanged)
         self.uiSetupReadySignal.connect(self.uiSetupReady)
@@ -210,6 +215,8 @@ class FlightTab(TabToolbox, flight_tab_class):
 
         self.targetCalPitch.setValue(Config().get("trim_pitch"))
         self.targetCalRoll.setValue(Config().get("trim_roll"))
+        self.stepDistance.setValue(self._stepDistance)
+        self.stepYawAngle.setValue(self._stepYawAngle)
 
         self._helper.inputDeviceReader.alt1_updated.add_callback(self.alt1_updated)
         self._helper.inputDeviceReader.alt2_updated.add_callback(self.alt2_updated)
@@ -262,21 +269,21 @@ class FlightTab(TabToolbox, flight_tab_class):
         elif action == CommanderAction.LAND:
             self._hlCommander.land()
         elif action == CommanderAction.LEFT:
-            self._hlCommander.left(0.5)
+            self._hlCommander.left(self._stepDistance)
         elif action == CommanderAction.RIGHT:
-            self._hlCommander.right(0.5)
+            self._hlCommander.right(self._stepDistance)
         elif action == CommanderAction.FORWARD:
-            self._hlCommander.forward(0.5)
+            self._hlCommander.forward(self._stepDistance)
         elif action == CommanderAction.BACK:
-            self._hlCommander.back(0.5)
+            self._hlCommander.back(self._stepDistance)
         elif action == CommanderAction.UP:
-            self._hlCommander.up(0.5)
+            self._hlCommander.up(self._stepDistance)
         elif action == CommanderAction.DOWN:
-            self._hlCommander.down(0.5)
+            self._hlCommander.down(self._stepDistance)
         elif action == CommanderAction.YAW_LEFT:
-            self._hlCommander.yaw(yaw=0.39, duration_s=0.1)
+            self._hlCommander.yaw(yaw=(self._stepYawAngle*6.28)/360.0, duration_s=0.1*(self._stepYawAngle/22.5))
         elif action == CommanderAction.YAW_RIGHT:
-            self._hlCommander.yaw(yaw=-0.39, duration_s=0.1)
+            self._hlCommander.yaw(yaw=-(self._stepYawAngle*6.28)/360.0, duration_s=0.1*(self._stepYawAngle/22.5))
 
     def _logging_error(self, log_conf, msg):
         QMessageBox.about(self, "Log error",
@@ -509,6 +516,14 @@ class FlightTab(TabToolbox, flight_tab_class):
         logger.debug("Roll trim updated to [%f]" % value)
         self._helper.inputDeviceReader.trim_roll = value
         Config().set("trim_roll", value)
+
+    def _stepDistance_changed(self, value):
+        logger.debug("stepDistance updated to [%f]" % value)
+        self._stepDistance = value
+        
+    def _stepYawAngle_changed(self, value):
+        logger.debug("stepYawAngle updated to [%f]" % value)
+        self._stepYawAngle = value
 
     def calUpdateFromInput(self, rollCal, pitchCal):
         logger.debug("Trim changed on joystick: roll=%.2f, pitch=%.2f",

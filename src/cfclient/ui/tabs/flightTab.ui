@@ -734,7 +734,7 @@
                   </widget>
                  </item>
                  <item row="3" column="0">
-                  <widget class="QDoubleSpinBox" name="StepDistance">
+                  <widget class="QDoubleSpinBox" name="stepDistance">
                     <property name="minimum">
                     <double>0.000000000000000</double>
                     </property>
@@ -754,7 +754,7 @@
                   </widget>
                  </item>
                  <item row="5" column="0">
-                  <widget class="QDoubleSpinBox" name="StepYawAngle">
+                  <widget class="QDoubleSpinBox" name="stepYawAngle">
                     <property name="minimum">
                     <double>0.000000000000000</double>
                     </property>
