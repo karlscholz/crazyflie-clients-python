@@ -91,6 +91,8 @@ class CommanderAction(Enum):
     RIGHT = 6
     FORWARD = 7
     BACK = 8
+    YAW_LEFT = 9
+    YAW_RIGHT = 10
 
 
 class FlightTab(TabToolbox, flight_tab_class):
@@ -180,6 +182,8 @@ class FlightTab(TabToolbox, flight_tab_class):
         self.commanderBackButton.clicked.connect(lambda: self._flight_command(CommanderAction.BACK))
         self.commanderUpButton.clicked.connect(lambda: self._flight_command(CommanderAction.UP))
         self.commanderDownButton.clicked.connect(lambda: self._flight_command(CommanderAction.DOWN))
+        self.commanderYawLeftButton.clicked.connect(lambda: self._flight_command(CommanderAction.YAW_LEFT))
+        self.commanderYawRightButton.clicked.connect(lambda: self._flight_command(CommanderAction.YAW_RIGHT))
 
         self.uiSetupReady()
 
@@ -268,6 +272,10 @@ class FlightTab(TabToolbox, flight_tab_class):
         elif action == CommanderAction.UP:
             self._hlCommander.up(0.5)
         elif action == CommanderAction.DOWN:
+            self._hlCommander.down(0.5)
+        elif action == CommanderAction.YAW_LEFT:
+            self._hlCommander.up(0.5)
+        elif action == CommanderAction.YAW_RIGHT:
             self._hlCommander.down(0.5)
 
     def _logging_error(self, log_conf, msg):
