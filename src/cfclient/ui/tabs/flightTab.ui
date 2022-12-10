@@ -701,59 +701,25 @@
                   <number>2</number>
                  </property>
                  <property name="topMargin">
-                  <number>2</number>
+                  <number>0</number>
                  </property>
                  <property name="rightMargin">
                   <number>2</number>
                  </property>
                  <property name="bottomMargin">
-                  <number>2</number>
+                  <number>0</number>
                  </property>
                  <property name="spacing">
                   <number>5</number>
                  </property>
                  <item row="0" column="0">
-                  <widget class="QPushButton" name="commanderTakeOffButton">
-                   <property name="text">
-                    <string>Take off</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="1" column="0">
-                  <widget class="QPushButton" name="commanderLandButton">
-                   <property name="text">
-                    <string>Land</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="2" column="0">
-                  <widget class="QLabel" name="label_Distance">
-                    <property name="text">
-                    <string>Distance</string>
-                    </property>
-                  </widget>
-                 </item>
-                 <item row="3" column="0">
-                  <widget class="QDoubleSpinBox" name="stepDistance">
-                    <property name="minimum">
-                    <double>0.000000000000000</double>
-                    </property>
-                    <property name="maximum">
-                    <double>20.000000000000000</double>
-                    </property>
-                    <property name="singleStep">
-                    <double>0.100000000000000</double>
-                    </property>
-                  </widget>
-                 </item>
-                 <item row="4" column="0">
                   <widget class="QLabel" name="label_YawAngle">
                     <property name="text">
                     <string>Yaw Angle</string>
                     </property>
                   </widget>
                  </item>
-                 <item row="5" column="0">
+                 <item row="1" column="0">
                   <widget class="QDoubleSpinBox" name="stepYawAngle">
                     <property name="minimum">
                     <double>0.000000000000000</double>
@@ -766,7 +732,67 @@
                     </property>
                   </widget>
                  </item>
-                 <item row="0" column="1" rowspan="2" colspan="2">
+                 <item row="2" column="0">
+                  <widget class="QPushButton" name="commanderUpButton">
+                   <property name="text">
+                    <string>Up</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="3" column="0">
+                  <widget class="QPushButton" name="commanderDownButton">
+                   <property name="text">
+                    <string>Down</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="4" column="0">
+                  <widget class="QLabel" name="label_Distance">
+                    <property name="text">
+                    <string>Distance</string>
+                    </property>
+                  </widget>
+                 </item>
+                 <item row="5" column="0">
+                  <widget class="QDoubleSpinBox" name="stepDistance">
+                    <property name="minimum">
+                    <double>0.000000000000000</double>
+                    </property>
+                    <property name="maximum">
+                    <double>20.000000000000000</double>
+                    </property>
+                    <property name="singleStep">
+                    <double>0.100000000000000</double>
+                    </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="1">
+                  <widget class="QPushButton" name="commanderYawLeftButton">
+                    <property name="sizePolicy">
+                      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                      </sizepolicy>
+                    </property>
+                    <property name="text">
+                      <string>L ⟲</string>
+                    </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="2">
+                  <widget class="QPushButton" name="commanderYawRightButton">
+                    <property name="sizePolicy">
+                      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                      </sizepolicy>
+                    </property>
+                    <property name="text">
+                      <string>⟳ R</string>
+                    </property>
+                  </widget>
+                 </item>
+                 <item row="2" column="1" rowspan="2" colspan="2">
                   <layout class="QGridLayout" name="horizontalLayout">
                    <property name="sizeConstraint">
                     <enum>QLayout::SetDefaultConstraint</enum>
@@ -865,7 +891,7 @@
                   </layout>
                  </item>
                  <item row="5" column="1">
-                  <widget class="QPushButton" name="commanderYawLeftButton">
+                  <widget class="QPushButton" name="commanderTakeOffButton">
                     <property name="sizePolicy">
                       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                         <horstretch>0</horstretch>
@@ -873,12 +899,12 @@
                       </sizepolicy>
                     </property>
                     <property name="text">
-                      <string>YawLeft</string>
+                      <string>Take off</string>
                     </property>
                   </widget>
                  </item>
                  <item row="5" column="2">
-                  <widget class="QPushButton" name="commanderYawRightButton">
+                  <widget class="QPushButton" name="commanderLandButton">
                     <property name="sizePolicy">
                       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                         <horstretch>0</horstretch>
@@ -886,33 +912,7 @@
                       </sizepolicy>
                     </property>
                     <property name="text">
-                      <string>YawRight</string>
-                    </property>
-                  </widget>
-                 </item>
-                 <item row="6" column="1">
-                  <widget class="QPushButton" name="commanderUpButton">
-                    <property name="sizePolicy">
-                      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                        <horstretch>0</horstretch>
-                        <verstretch>0</verstretch>
-                      </sizepolicy>
-                    </property>
-                    <property name="text">
-                      <string>Up</string>
-                    </property>
-                  </widget>
-                 </item>
-                 <item row="6" column="2">
-                  <widget class="QPushButton" name="commanderDownButton">
-                    <property name="sizePolicy">
-                      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                        <horstretch>0</horstretch>
-                        <verstretch>0</verstretch>
-                      </sizepolicy>
-                    </property>
-                    <property name="text">
-                      <string>Down</string>
+                      <string>Land</string>
                     </property>
                   </widget>
                  </item>
